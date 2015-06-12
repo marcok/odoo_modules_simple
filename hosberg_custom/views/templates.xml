@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+
+<template id="apply" inherit_id="website_hr_recruitment.apply">
+    <xpath expr="//div/section[@id='forms']/form" position="replace">
+        
+        <form class="form-horizontal mt32" action="/jobs/thankyou" method="post" enctype="multipart/form-data">
+            <input type="hidden" t-att-value="job and job.department_id.id or False" name="department_id"/>
+            <input type="hidden" t-att-value="job and job.id or False" name="job_id"/>
+            <div t-attf-class="form-group #{error.get('salutation') and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="salutation">Mr. or Mrs.*</label>
+                <div class="col-md-7 col-sm-8">
+                    <input type="text" t-att-value="default.get('salutation')" class="form-control" name="salutation" required="True"/>
+                </div>
+            </div>
+            <div t-attf-class="form-group #{error.get('first_name') and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="first_name">First Name*</label>
+                <div class="col-md-7 col-sm-8">
+                    <input type="text" t-att-value="default.get('first_name')" class="form-control" name="first_name" required="True"/>
+                </div>
+            </div>
+            <div t-attf-class="form-group #{error.get('last_name') and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="last_name">Last Name*</label>
+                <div class="col-md-7 col-sm-8">
+                    <input type="text" t-att-value="default.get('last_name')" class="form-control" name="last_name" required="True"/>
+                </div>
+            </div>
+            
+            <div t-attf-class="form-group #{error.get('partner_address') and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="partner_address">Address*</label>
+                <div class="col-md-7 col-sm-8">
+                    <input type="text" t-att-value="default.get('partner_address')" class="form-control" name="partner_address" required="True"/>
+                </div>
+            </div>
+            
+            <div t-attf-class="form-group #{error.get('place') and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="place">Place*</label>
+                <div class="col-md-7 col-sm-8">
+                    <input type="text" t-att-value="default.get('place')" class="form-control" name="place" required="True"/>
+                </div>
+            </div> 
+            
+            <div t-attf-class="form-group #{error.get('partner_phone') and 'has-error' or ''}">
+	            <label class="col-md-3 col-sm-4 control-label" for="partner_phone">Phone*</label>
+	            <div class="col-md-7 col-sm-8">
+	                <input type="text" t-att-value="default.get('partner_phone')" class="form-control" name="partner_phone" required="True"/>
+	            </div>
+	        </div>
+	        
+	        <div t-attf-class="form-group #{error.get('email_from') and 'has-error' or ''}">
+                <label class="col-md-3 col-sm-4 control-label" for="email_from">Your Email*</label>
+                <div class="col-md-7 col-sm-8">
+                    <input type="email" t-att-value="default.get('email_from')" class="form-control" name="email_from" required="True"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label" for="cover_letter">Cover Letter Incl. Photo(upload single)*
+</label>
+                <div class="col-md-7 col-sm-8">
+                    <input class="input-file" id="fileInput" type="file" name="cover_letter"/>
+                    <span t-if="error.get('cover_letter')">Please send again your cover letter.</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label" for="curriculum_vitae">Curriculum Vitae(upload single)*
+</label>
+                <div class="col-md-7 col-sm-8">
+                    <input class="input-file" id="fileInput" type="file" name="curriculum_vitae"/>
+                    <span t-if="error.get('curriculum_vitae')">Please send again your curriculum vitae.</span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="col-md-3 col-sm-4 control-label" for="diploma_certificates">Diploma Certificates(upload multiple)
+</label>
+                <div class="col-md-7 col-sm-8">
+                    <input class="input-file" id="fileInput" type="file" name="diploma_certificates"/>
+                    
+                </div>
+            </div>
+            
+            <div t-attf-class="form-group">
+	            <label class="col-md-3 col-sm-4 control-label" for="possible_join_date">Possible Join Date</label>
+	            <div class="col-md-7 col-sm-8">
+	                <input type="text" placeholder="YYYY-MM-DD" class="form-control" name="possible_join_date"/> 
+	            </div>
+	        </div>
+            
+            <div class="form-group">
+	            <label class="col-md-3 col-sm-4 control-label" for="description">Comments/Remarks
+	            </label>
+	            <div class="col-md-7 col-sm-8">
+	                <textarea  class="form-control" t-esc="default.get('description')" name="description" style="min-height: 120px"/>
+	            </div>
+	            <label class="col-md-3 col-sm-4 control-label">* is mandatory</label>
+	        </div>
+	        
+	        <div class="form-group">
+                <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+            
+        </form>
+                    
+    </xpath>
+    
+</template>
+
+
+</data>
+</openerp>

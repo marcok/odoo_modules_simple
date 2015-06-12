@@ -68,7 +68,7 @@ class website_hr_recruitment(http.Controller):
         error = {}
         default = {}
         if 'website_hr_recruitment_error' in request.session:
-            print '----'
+            
             error = request.session.pop('website_hr_recruitment_error')
             default = request.session.pop('website_hr_recruitment_default')
         return request.render("website_hr_recruitment.apply", {

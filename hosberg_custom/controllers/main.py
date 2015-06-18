@@ -22,13 +22,6 @@ class website_hr_recruitment(http.Controller):
             curriculum_vitae = post.pop('curriculum_vitae')
             diploma_certificates = post.pop('diploma_certificates')
             
-            if cover_letter:
-                error['cover_letter'] = 'reset'
-            if curriculum_vitae:
-                error['curriculum_vitae'] = 'reset'   
-            if diploma_certificates:
-                error['diploma_certificates'] = 'reset'    
-            
             request.session['website_hr_recruitment_default'] = post
             return request.redirect('/jobs/apply/%s' % post.get("job_id"))
  

@@ -2,6 +2,12 @@
 <openerp>
 <data>
 
+<template id="detail" inherit_id="website_hr_recruitment.detail">
+    <xpath expr="//div/div/h5[@class='text-center']" position="after">
+        <h5 class="text-center" t-field="job.description" />
+        <h5 class="text-center" t-field="job.requirements" />
+    </xpath>
+</template>
 
 <template id="apply" inherit_id="website_hr_recruitment.apply">
     <xpath expr="//div/section[@id='forms']/form" position="replace">
